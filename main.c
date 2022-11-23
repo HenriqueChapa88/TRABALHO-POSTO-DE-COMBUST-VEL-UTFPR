@@ -87,17 +87,19 @@ int main(void){
     if (opcao == 1 || opcao == 2 || opcao == 3 || opcao == 4 || opcao == 5){
        switch(opcao){
         case 1:
+                  system("clear");
          if(fila_atual < tamanho_fila){
               flush_in();
-            printf("\n\nQual o modelo do carro?\n\n");
+            printf (Ccyan"\n[1] ADICIONAR UM CARRO NA FALA\n\n");
+            printf("\n\nQual o modelo do carro ? \n");
           fgets(carrosNAfila[fila_atual].modelo,20,stdin);
 
-           printf("\nInforme a cor do carro: ");
+           printf("\nInforme a cor do carro: \n ");
             fgets(carrosNAfila[fila_atual].cor,20,stdin);
-           carrosNAfila[fila_atual].cor[strcspn(carrosNAfila[fila_atual].cor, "\n")] = 0;
+           carrosNAfila[fila_atual].cor[strcspn(carrosNAfila[fila_atual].cor,"\n")] = 0;
            
-          printf("\n\nQual o ano do carro?\n\n");
-         scanf("%d", &carrosNAfila[fila_atual].ano);
+          printf("\nQual o ano do carro?\n");
+         scanf("%d"Cwhite, &carrosNAfila[fila_atual].ano);
             system("clear");
            fila_atual = fila_atual+1;
           printf(Cgreen"\nCarro adicionado na fila\n");
@@ -108,12 +110,13 @@ int main(void){
       break;
           
         case 2:
-                   system("clear");
+          system("clear");
+          printf ("\n[2] ABASTECER UM VEÍCULO\n\n");
           if(fila_atual != 0){
             float abastecer_litros;
             if (tanque_atual <= 0) {
-            printf(Cred"\nPUTS MEU CHAPA, ESTAMOS SEM COMBUSTÍVEL");
-              fila_atual = fila_atual - 1;
+            printf(Cred"\PESSOAL PEDIMOS DESCULPAS PELO TRANSTORNO, MAS ESTAMOS SEM COMBUSTÍVEL, VAMOS TIRAR TODOS OS CARROS DA FILA");
+              fila_atual = 0;
               printf(Cblue"\n\nCarros na fila: %d", fila_atual);
               
               break;
@@ -144,15 +147,16 @@ int main(void){
               }         
           }
           else {
-            printf(Cyellow"A fila está vazia, primeiro adicione um carro."Cwhite);
+            printf(Cred "A FILA ESTÁ VAZIA, PRIMEIRO ADICIONE UM CARRO.", Cwhite);
             system("clear"); 
           }
           break;
 
         
         case 3:
-        
+        system("clear");
           restantes = fila_atual;
+        printf (Cwhite "\n\n[3] FILA DE ESPERA\n\n");
         printf(Cwhite "Carros na fila:%d\n", restantes);
           for (int i = 0; restantes > i; i++) {
             printf(Cblue"\nCarro [%d] \n"Cyellow, i+1);
