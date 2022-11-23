@@ -12,21 +12,13 @@
 #define Ccyan "\e[0;36m"
 #define Cwhite "\e[0;37m"
 
-void opcaoMenu(), opcaoInvalida(),opcaoRelatorio();
+void opcaoMenu(), opcaoInvalida(),opcaoRelatorio(), infoCarro();
 
 struct TCarro{
     char modelo[20];
 char cor[20];
     int ano;
 };
-
-void infoCarro(struct TCarro Carros) {
-  printf("\nModelo do carro: %s\n", Carros.modelo);
-    printf("\n Cor do carro: %s\n", Carros.cor);
-  printf("\nAno de lançamento: %d\n", Carros.ano);
-
-  
-}
 
 void flush_in(){
   int ch;
@@ -71,9 +63,9 @@ int main(void){
     }
   }
   
+     printf ("\n");
   
-  printf ("\n");
-
+   // mostrando a definição dos valores iniciais
    system("clear");
   printf(Cpurple "\n TODOS OS VALORES DOS DADOS INICIAIS FORAM DEFINIDOS\n\n");
   printf(Cgreen "\nO Preço da gasolina foi definido como: R$%.2f", preco_combustivel);
@@ -116,7 +108,7 @@ int main(void){
       break;
           
         case 2:
-          
+                   system("clear");
           if(fila_atual != 0){
             float abastecer_litros;
             if (tanque_atual <= 0) {
@@ -159,21 +151,21 @@ int main(void){
 
         
         case 3:
+        
           restantes = fila_atual;
-        printf(Cwhite "Carros na fila: %d\n", restantes);
+        printf(Cwhite "Carros na fila:%d\n", restantes);
           for (int i = 0; restantes > i; i++) {
-            printf(Cblue"\nCarro %d \n"Cyellow, i+1);
+            printf(Cblue"\nCarro [%d] \n"Cyellow, i+1);
             infoCarro(carrosNAfila[i]);
           } 
          break;
-        
         case 4:
           system("clear");
            opcao_relatorio = 7;
           while (opcao_relatorio != 6){ 
             opcaoRelatorio();
             scanf("%d",&opcao_relatorio);
-             switch(opcao_relatorio){
+             switch(opcao_relatorio){ 
               case 1:
                system("clear");
               printf("A quantidade de litros vendida é de: %.2f L \n", litros_vendidos);
@@ -186,7 +178,7 @@ int main(void){
             case 3:
                system("clear");
                for (int i = 0;  Totalcarros_atendidos > i; i++) {
-                    printf(Cblue"\nCarro %d \n"Cwhite, i+1);
+                    printf(Cblue"\nCarro [%d]\n"Cwhite, i+1);
                     infoCarro(carrosAtendidos[i]);
                   } 
                   
@@ -232,14 +224,12 @@ int main(void){
   }
 
   void opcaoMenu(){
-    printf(Cyellow"\nMENU PRINCIPAL\n"Cwhite);
-    printf ("\n");
+    printf(Cyellow"\n\n_______________MENU PRINCIPAL_______________\n\n"Cwhite);
     printf(Cpurple"1 - Adicionar um carro na fila \n");
     printf("2 - Abastecimento \n");
     printf("3 - Exibir carros na fila de espera \n");
     printf("4 - Relatórios\n");
-    printf("5 - Encerrar\n"Cwhite);
-    printf ("\n");
+    printf("5 - Encerrar\n\n"Cwhite);
     printf ("Escolha uma opção de 1 a 4, ou clique 5 para encerrar o programa: \n");
   }
 void opcaoInvalida(){
@@ -247,11 +237,18 @@ void opcaoInvalida(){
 }
 
 void opcaoRelatorio(){
-  printf(Ccyan"\n\n1 - Quantidade de litros vendida;\n");
+  printf(Ccyan"\n\n_______________MENU RELATÓRIO_______________\n\n");
+          printf("1 - Quantidade de litros vendida;\n");
           printf("2 - Valor total arrecadado com as vendas;\n");
           printf("3 - Quantidade de carros atendidos;\n");
           printf("4 - Quantidade de combustível restante no tanque;\n");
           printf("5 - Gerar arquivo para impressão (com todas as informações de A, B, C e D);\n");
-          printf("6 - voltar ao menu anterior.\n\n"Cwhite); 
+          printf("6 - voltar ao menu anterior.\n"Cwhite); 
 }
-      
+      void infoCarro(struct TCarro Carros) {
+  printf("\nModelo do carro: %s\n", Carros.modelo);
+    printf("\n Cor do carro: %s\n", Carros.cor);
+  printf("\nAno de lançamento: %d\n", Carros.ano);
+
+  
+}
