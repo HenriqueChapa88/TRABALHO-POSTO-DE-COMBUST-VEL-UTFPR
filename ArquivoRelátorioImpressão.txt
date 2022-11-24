@@ -3,11 +3,11 @@
 _______________ARQUIVO RELATÓRIO PARA IMPRESSÃO_______________
 
 
-Quantidade de litros vendida [21.00L]
+Quantidade de litros vendida [20.00L]
 
-Valor arrecadado com as vendas [210.00R$]
+Valor arrecadado com as vendas [200.00R$]
 
-Quantidade de carros atendidios: [2]
+Quantidade de carros atendidios: [1]
 
 Carro [1]
 
@@ -18,13 +18,4 @@ Modelo do carro: 1
 
 Ano de lançamento: 1
 
-Carro [2]
-
-Modelo do carro: 2
-
-
- Cor do carro: 2
-
-Ano de lançamento: 2
-
-Quantidade de combustível restante [179.00L]
+Quantidade de combustível restante [180.00L]

@@ -29,9 +29,8 @@ int main(void){
  
   printf (Cgreen"\n\nPrograma feito por: Henrique Silva Pereira dos Santos\n\n");
   printf ("\n\nEste programa serve para gerenciar O POSTO DO CHAPA !!!!!!\n\n");
-  printf ("\n");
-  printf ("\n"Cwhite);
-  
+  printf ("\n\n"Cwhite);
+
   // Validação do preço do combusível
  float preco_combustivel = 0; 
  bool Validacao_PrecoCombustivel = false;
@@ -72,7 +71,7 @@ int main(void){
   printf(Cgreen "\nO número máximo da fila foi definido como: %d\n\n", tamanho_fila);
 
 
-    
+  // Criação dos dois vetores, Carros Na fila e Carros Atendidos.
   struct TCarro *carrosNAfila, *carrosAtendidos;
     carrosNAfila = (int*)malloc(tamanho_fila * sizeof(struct TCarro));
   carrosAtendidos = (int*)malloc(1 * sizeof(struct TCarro));
@@ -82,15 +81,16 @@ int main(void){
   float valor_arrecadado = 0,tanque_atual=200,  litros_vendidos=0;
    int Totalcarros_atendidos = 0;
   while (opcao != 5){
+    // Menu Principal
     opcaoMenu();
       scanf("%d",&opcao);
     if (opcao == 1 || opcao == 2 || opcao == 3 || opcao == 4 || opcao == 5){
        switch(opcao){
         case 1:
                   system("clear");
-         if(fila_atual < tamanho_fila){
               flush_in();
             printf (Ccyan"\n[1] ADICIONAR UM CARRO NA FALA\n\n");
+                 if(fila_atual < tamanho_fila){
             printf("\n\nQual o modelo do carro ? \n");
           fgets(carrosNAfila[fila_atual].modelo,20,stdin);
 
@@ -147,7 +147,7 @@ int main(void){
               }         
           }
           else {
-            printf(Cred "A FILA ESTÁ VAZIA, PRIMEIRO ADICIONE UM CARRO.",Cwhite);
+            printf(Cred "A FILA ESTÁ VAZIA, PRIMEIRO ADICIONE UM CARRO.");
             system("clear"); 
           }
           break;
@@ -167,20 +167,24 @@ int main(void){
           system("clear");
            opcao_relatorio = 7;
           while (opcao_relatorio != 6){ 
+            // Opção Relatório
             opcaoRelatorio();
             scanf("%d",&opcao_relatorio);
              switch(opcao_relatorio){ 
               case 1:
                system("clear");
+              printf ("OPÇÃO [A] MENU RELATÓRIO -- LITROS VENDIDOS\n\n");
               printf("A quantidade de litros vendida é de: %.2f L \n", litros_vendidos);
             break;
 
             case 2:
-              system("clear");
+              system("clear");              
+              printf ("OPÇÃO [B] MENU RELATÓRIO -- VALOR ARRECADADO\n\n");
               printf("O valor total arrecadado até o momento é de: R$%.2f \n", valor_arrecadado);
             break;
             case 3:
                system("clear");
+                  printf ("OPÇÃO [C] MENU RELATÓRIO -- QUANTIDADE DE CARROS ATENDIDOS\n\n");
                for (int i = 0;  Totalcarros_atendidos > i; i++) {
                     printf(Cblue"\nCarro [%d]\n"Cwhite, i+1);
                     infoCarro(carrosAtendidos[i]);
@@ -190,10 +194,12 @@ int main(void){
                   break;
             case 4:
              system("clear");
+              printf ("OPÇÃO [D] MENU RELATÓRIO -- QUANTIDADE RESTANTE NO TANQUE\n\n");
               printf("Combustível restante no tanque: %.2f L \n", tanque_atual);
             break;
             case 5:
               system("clear");
+              printf ("OPÇÃO [E] MENU RELATÓRIO -- ARQUIVO RELATÓRIO PARA IMPRESSÃO\n\n");
                FILE *arquivo;
   arquivo = fopen("ArquivoRelátorioImpressão.txt", "w");
   if (arquivo==NULL){
@@ -215,6 +221,7 @@ int main(void){
             break;
                case 6:
                system ("clear");
+               printf ("OPÇÃO [F] MENU RELATÓRIO -- VOLTAR AO MENU PRINCIPAL\n\n");
                printf("Voltar para o menu principal"); 
                break;
                  default:
