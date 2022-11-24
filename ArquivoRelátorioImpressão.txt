@@ -1,0 +1,12 @@
+
+
+_______________ARQUIVO RELATÓRIO PARA IMPRESSÃO_______________
+
+
+Quantidade de litros vendida [200.00L]
+
+Valor arrecadado com as vendas [2000.00R$]
+
+Carros atendidos [1]
+
+Quantidade de combustível restante [0.00L]

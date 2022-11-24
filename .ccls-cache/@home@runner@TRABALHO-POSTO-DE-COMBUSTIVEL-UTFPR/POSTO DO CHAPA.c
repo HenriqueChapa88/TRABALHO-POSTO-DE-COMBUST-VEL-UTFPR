@@ -26,7 +26,7 @@ void flush_in(){
 }
 
 int main(void){
- 
+
   printf (Cgreen"\n\nPrograma feito por: Henrique Silva Pereira dos Santos\n\n");
   printf ("\n\nEste programa serve para gerenciar O POSTO DO CHAPA !!!!!!\n\n");
   printf ("\n");
@@ -126,7 +126,7 @@ int main(void){
                 scanf("%f", &abastecer_litros);
                 while (abastecer_litros > tanque_atual) {
                  printf("Puts chefia, não temos combustivel suficiente para atender ao seu pedido, temos apenas um total de %.2f L\n",tanque_atual);      
-                printf ("\nVamos encher com o máximo que tem no taque %2.fL ? Ou vai ser uma quantia menor\n ", tanque_atual);
+
                   scanf("%f", &abastecer_litros);
                 }
                 printf(Cgreen"\nCarro abastecido.\n"Cwhite);
@@ -195,18 +195,7 @@ int main(void){
             break;
             case 5:
               system("clear");
-               FILE *arquivo;
-  arquivo = fopen("ArquivoRelátorioImpressão.txt", "w");
-  if (arquivo==NULL){
-    printf("Não foi possível abrir o arquivo");
-    exit (0);
-  }
-  fprintf (arquivo, "\n\n_______________ARQUIVO RELATÓRIO PARA IMPRESSÃO_______________\n\n");
-  fprintf (arquivo, "\nQuantidade de litros vendida [%.2fL]\n", litros_vendidos);
-  fprintf (arquivo, "\nValor arrecadado com as vendas [%.2fR$]\n", valor_arrecadado);
-  fprintf (arquivo, "\nCarros atendidos [%d]\n", Totalcarros_atendidos);
-  fprintf (arquivo, "\nQuantidade de combustível restante [%.2fL]\n", tanque_atual);
-  fclose (arquivo);
+              printf(Cyellow" Gerando arquivo para impressão.... \n\n");
             break;
                case 6:
                system ("clear");

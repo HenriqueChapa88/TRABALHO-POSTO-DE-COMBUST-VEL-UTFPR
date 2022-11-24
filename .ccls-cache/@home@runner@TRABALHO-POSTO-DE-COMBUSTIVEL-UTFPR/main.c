@@ -26,7 +26,7 @@ void flush_in(){
 }
 
 int main(void){
-
+ 
   printf (Cgreen"\n\nPrograma feito por: Henrique Silva Pereira dos Santos\n\n");
   printf ("\n\nEste programa serve para gerenciar O POSTO DO CHAPA !!!!!!\n\n");
   printf ("\n");
@@ -63,9 +63,9 @@ int main(void){
     }
   }
   
+     printf ("\n");
   
-  printf ("\n");
-
+   // mostrando a definição dos valores iniciais
    system("clear");
   printf(Cpurple "\n TODOS OS VALORES DOS DADOS INICIAIS FORAM DEFINIDOS\n\n");
   printf(Cgreen "\nO Preço da gasolina foi definido como: R$%.2f", preco_combustivel);
@@ -87,17 +87,19 @@ int main(void){
     if (opcao == 1 || opcao == 2 || opcao == 3 || opcao == 4 || opcao == 5){
        switch(opcao){
         case 1:
+                  system("clear");
          if(fila_atual < tamanho_fila){
               flush_in();
-            printf("\n\nQual o modelo do carro?\n\n");
+            printf (Ccyan"\n[1] ADICIONAR UM CARRO NA FALA\n\n");
+            printf("\n\nQual o modelo do carro ? \n");
           fgets(carrosNAfila[fila_atual].modelo,20,stdin);
 
-           printf("\nInforme a cor do carro: ");
+           printf("\nInforme a cor do carro: \n ");
             fgets(carrosNAfila[fila_atual].cor,20,stdin);
-           carrosNAfila[fila_atual].cor[strcspn(carrosNAfila[fila_atual].cor, "\n")] = 0;
+           carrosNAfila[fila_atual].cor[strcspn(carrosNAfila[fila_atual].cor,"\n")] = 0;
            
-          printf("\n\nQual o ano do carro?\n\n");
-         scanf("%d", &carrosNAfila[fila_atual].ano);
+          printf("\nQual o ano do carro?\n");
+         scanf("%d"Cwhite, &carrosNAfila[fila_atual].ano);
             system("clear");
            fila_atual = fila_atual+1;
           printf(Cgreen"\nCarro adicionado na fila\n");
@@ -108,12 +110,13 @@ int main(void){
       break;
           
         case 2:
-                   system("clear");
+          system("clear");
+          printf ("\n[2] ABASTECER UM VEÍCULO\n\n");
           if(fila_atual != 0){
             float abastecer_litros;
             if (tanque_atual <= 0) {
-            printf(Cred"\nPUTS MEU CHAPA, ESTAMOS SEM COMBUSTÍVEL");
-              fila_atual = fila_atual - 1;
+            printf(Cred"\nPESSOAL PEDIMOS DESCULPAS PELO TRANSTORNO, MAS ESTAMOS SEM COMBUSTÍVEL, VAMOS TIRAR TODOS OS CARROS DA FILA");
+              fila_atual = 0;
               printf(Cblue"\n\nCarros na fila: %d", fila_atual);
               
               break;
@@ -123,7 +126,7 @@ int main(void){
                 scanf("%f", &abastecer_litros);
                 while (abastecer_litros > tanque_atual) {
                  printf("Puts chefia, não temos combustivel suficiente para atender ao seu pedido, temos apenas um total de %.2f L\n",tanque_atual);      
-
+                printf ("\nVamos encher com o máximo que tem no taque %2.fL ? Ou vai ser uma quantia menor\n ", tanque_atual);
                   scanf("%f", &abastecer_litros);
                 }
                 printf(Cgreen"\nCarro abastecido.\n"Cwhite);
@@ -144,15 +147,16 @@ int main(void){
               }         
           }
           else {
-            printf(Cyellow"A fila está vazia, primeiro adicione um carro."Cwhite);
+            printf(Cred "A FILA ESTÁ VAZIA, PRIMEIRO ADICIONE UM CARRO.",Cwhite);
             system("clear"); 
           }
           break;
 
         
         case 3:
-        
+        system("clear");
           restantes = fila_atual;
+        printf (Cwhite "\n\n[3] FILA DE ESPERA\n\n");
         printf(Cwhite "Carros na fila:%d\n", restantes);
           for (int i = 0; restantes > i; i++) {
             printf(Cblue"\nCarro [%d] \n"Cyellow, i+1);
@@ -191,7 +195,18 @@ int main(void){
             break;
             case 5:
               system("clear");
-              printf(Cyellow" Gerando arquivo para impressão.... \n\n");
+               FILE *arquivo;
+  arquivo = fopen("ArquivoRelátorioImpressão.txt", "w");
+  if (arquivo==NULL){
+    printf("Não foi possível abrir o arquivo");
+    exit (0);
+  }
+  fprintf (arquivo, "\n\n_______________ARQUIVO RELATÓRIO PARA IMPRESSÃO_______________\n\n");
+  fprintf (arquivo, "\nQuantidade de litros vendida [%.2fL]\n", litros_vendidos);
+  fprintf (arquivo, "\nValor arrecadado com as vendas [%.2fR$]\n", valor_arrecadado);
+  fprintf (arquivo, "\nCarros atendidos [%d]\n", Totalcarros_atendidos);
+  fprintf (arquivo, "\nQuantidade de combustível restante [%.2fL]\n", tanque_atual);
+  fclose (arquivo);
             break;
                case 6:
                system ("clear");
