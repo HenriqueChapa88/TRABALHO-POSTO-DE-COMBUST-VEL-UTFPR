@@ -212,7 +212,7 @@ int main(void){
   fprintf(arquivo, "\nQuantidade de carros atendidios: [%d]\n", Totalcarros_atendidos);    
   for (int i = 0;  Totalcarros_atendidos > i; i++) {
     fprintf(arquivo, "\nCarro [%d]\n", i+1);
-    fprintf(arquivo,"\nModelo do carro: %s\n", carrosAtendidos[i].modelo);
+    fprintf(arquivo,"\nModelo do carro: %s", carrosAtendidos[i].modelo);
     fprintf(arquivo,"\n Cor do carro: %s\n", carrosAtendidos[i].cor);
     fprintf(arquivo, "\nAno de lançamento: %d\n", carrosAtendidos[i].ano);
   }
@@ -273,9 +273,7 @@ void opcaoRelatorio(){
           printf("6 - voltar ao menu anterior.\n"Cwhite); 
 }
       void infoCarro(struct TCarro Carros) {
-  printf("\nModelo do carro: %s\n", Carros.modelo);
-    printf("\n Cor do carro: %s\n", Carros.cor);
+  printf("\nModelo do carro: %s", Carros.modelo);
+  printf("\n Cor do carro: %s\n", Carros.cor);
   printf("\nAno de lançamento: %d\n", Carros.ano);
-
-  
 }
