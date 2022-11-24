@@ -184,8 +184,7 @@ int main(void){
                for (int i = 0;  Totalcarros_atendidos > i; i++) {
                     printf(Cblue"\nCarro [%d]\n"Cwhite, i+1);
                     infoCarro(carrosAtendidos[i]);
-                  } 
-                  
+                  }                   
                   printf(Cblue"\nQuantidade de carros atendidios: %d\n"Cwhite, Totalcarros_atendidos);
   
                   break;
@@ -204,7 +203,13 @@ int main(void){
   fprintf (arquivo, "\n\n_______________ARQUIVO RELATÓRIO PARA IMPRESSÃO_______________\n\n");
   fprintf (arquivo, "\nQuantidade de litros vendida [%.2fL]\n", litros_vendidos);
   fprintf (arquivo, "\nValor arrecadado com as vendas [%.2fR$]\n", valor_arrecadado);
-  fprintf (arquivo, "\nCarros atendidos [%d]\n", Totalcarros_atendidos);
+  fprintf(arquivo, "\nQuantidade de carros atendidios: [%d]\n", Totalcarros_atendidos);    
+  for (int i = 0;  Totalcarros_atendidos > i; i++) {
+    fprintf(arquivo, "\nCarro [%d]\n", i+1);
+    fprintf(arquivo,"\nModelo do carro: %s\n", carrosAtendidos[i].modelo);
+    fprintf(arquivo,"\n Cor do carro: %s\n", carrosAtendidos[i].cor);
+    fprintf(arquivo, "\nAno de lançamento: %d\n", carrosAtendidos[i].ano);
+  }
   fprintf (arquivo, "\nQuantidade de combustível restante [%.2fL]\n", tanque_atual);
   fclose (arquivo);
             break;
