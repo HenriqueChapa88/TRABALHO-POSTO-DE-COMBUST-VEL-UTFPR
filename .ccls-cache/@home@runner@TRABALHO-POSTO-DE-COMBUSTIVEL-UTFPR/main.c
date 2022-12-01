@@ -81,6 +81,7 @@ int main(void){
   float valor_arrecadado = 0,tanque_atual=200,  litros_vendidos=0;
    int Totalcarros_atendidos = 0;
   while (opcao != 5){
+    
     // Menu Principal
     opcaoMenu();
       scanf("%d",&opcao);
@@ -89,7 +90,8 @@ int main(void){
         case 1:
                   system("clear");
               flush_in();
-            printf (Ccyan"\n[1] ADICIONAR UM CARRO NA FALA\n\n");
+            printf (Ccyan"\n[1] ADICIONAR UM CARRO NA FILA\n\n");
+          if (tanque_atual>0){
                  if(fila_atual < tamanho_fila){
             printf("\n\nQual o modelo do carro ? \n");
           fgets(carrosNAfila[fila_atual].modelo,20,stdin);
@@ -103,10 +105,14 @@ int main(void){
             system("clear");
            fila_atual = fila_atual+1;
           printf(Cgreen"\nCarro adicionado na fila\n");
-        }
+            }
         else{
           printf(Cred "TAMANHO MÁXIMO DA FILA FOI ATINGIDO\n");
         }
+        }else{
+            printf("NÃO E POSSÍVEL ADICIONAR CARRO, POIS NÃO TEMOS MAIS COMBUSTÍVEL");
+          }
+             
       break;
           
         case 2:
