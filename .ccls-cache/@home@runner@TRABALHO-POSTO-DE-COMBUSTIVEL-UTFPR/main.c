@@ -31,8 +31,11 @@ int main(void){
   printf ("\n\nEste programa serve para gerenciar O POSTO DO CHAPA !!!!!!\n\n");
   printf ("\n\n"Cwhite);
 
+ // Escrita das variáveis 
+ float preco_combustivel = 0, valor_arrecadado = 0,tanque_atual=200,  litros_vendidos=0; 
+   int opcao = 7, opcao_relatorio, restantes = 0, Totalcarros_atendidos = 0, tamanho_fila,  fila_atual=0;  
+  
   // Validação do preço do combusível
- float preco_combustivel = 0; 
  bool Validacao_PrecoCombustivel = false;
   while(Validacao_PrecoCombustivel == false){
     printf(Cwhite"Digite o preço do combustível, por favor utilizar ponto no lugar da virgula para numeros quebrados: \n");
@@ -46,7 +49,7 @@ int main(void){
     }
   }
 // Validação fila
-   int tamanho_fila,  fila_atual=0;  
+
   bool validacao_fila = false;
   
   while(validacao_fila == false){
@@ -76,13 +79,9 @@ int main(void){
     carrosNAfila = (int*)malloc(tamanho_fila * sizeof(struct TCarro));
   carrosAtendidos = (int*)malloc(1 * sizeof(struct TCarro));
   
-  int opcao = 7;
-  int opcao_relatorio, restantes = 0;
-  float valor_arrecadado = 0,tanque_atual=200,  litros_vendidos=0;
-   int Totalcarros_atendidos = 0;
+ 
   while (opcao != 5){
-    
-    // Menu Principal
+     // Menu Principal
     opcaoMenu();
       scanf("%d",&opcao);
     if (opcao == 1 || opcao == 2 || opcao == 3 || opcao == 4 || opcao == 5){
@@ -110,7 +109,7 @@ int main(void){
           printf(Cred "TAMANHO MÁXIMO DA FILA FOI ATINGIDO\n");
         }
         }else{
-            printf("NÃO E POSSÍVEL ADICIONAR CARRO, POIS NÃO TEMOS MAIS COMBUSTÍVEL");
+            printf(Cred"NÃO E POSSÍVEL ADICIONAR CARRO, POIS NÃO TEMOS MAIS COMBUSTÍVEL\n");
           }
              
       break;
