@@ -3,18 +3,18 @@
 _______________ARQUIVO RELATÓRIO PARA IMPRESSÃO_______________
 
 
-Quantidade de litros vendida [40.00L]
+Quantidade de litros vendida [10.00L]
 
-Valor arrecadado com as vendas [400.00R$]
+Valor arrecadado com as vendas [100.00R$]
 
 Quantidade de carros atendidios: [1]
 
 Carro [1]
 
-Modelo do carro: Land Rover
+Modelo do carro: 1
 
- Cor do carro: Azul
+ Cor do carro: 1
 
-Ano de lançamento: 2022
+Ano de lançamento: 1
 
-Quantidade de combustível restante [160.00L]
+Quantidade de combustível restante [190.00L]
