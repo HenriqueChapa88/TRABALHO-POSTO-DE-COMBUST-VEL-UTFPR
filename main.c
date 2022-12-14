@@ -12,6 +12,7 @@
 #define Ccyan "\e[0;36m"
 #define Cwhite "\e[0;37m"
 
+
 void opcaoMenu(), opcaoInvalida(),opcaoRelatorio(), infoCarro();
 
 //criação do struct
@@ -128,7 +129,7 @@ int main(void){
               else {
                 printf("Quantos litros deseja abastecer? \n");
                 scanf("%f", &abastecer_litros);
-              while (abastecer_litros < 0){
+              while (abastecer_litros <= 0){
                   // Validação preço a abastecer maior que 0
                 printf(Cred "QUANTIDADE DE LITRO INVÁLIDA, POR FAVOR DIGITE UM NUMERO MAIOR QUE 0\n"Cwhite);
                   printf("Quantos litros deseja abastecer? \n");
@@ -139,7 +140,7 @@ int main(void){
                 printf ("\nVamos encher com o máximo que tem no taque %2.fL ? Ou vai ser uma quantia menor\n ", tanque_atual);
                scanf("%f", &abastecer_litros);
                   // Validação preço a abastecer maior que 0
-                while (abastecer_litros < 0){
+                while (abastecer_litros <= 0){
                 printf(Cred "QUANTIDADE DE LITRO INVÁLIDA, POR FAVOR DIGITE UM NUMERO MAIOR QUE 0\n"Cwhite);
                   printf("Quantos litros deseja abastecer? \n");
                   scanf("%f", &abastecer_litros);
