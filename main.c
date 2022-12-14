@@ -76,7 +76,7 @@ int main(void){
   // Criação dos dois vetores, Carros Na fila e Carros Atendidos.
   struct TCarro *carrosNAfila, *carrosAtendidos;
     carrosNAfila = (struct TCarro*)malloc(tamanho_fila * sizeof(struct TCarro));
-  carrosAtendidos = (struct TCarro*)malloc(1 * sizeof(struct TCarro));
+  carrosAtendidos = (struct TCarro*)malloc(1* sizeof(struct TCarro));
   
  
   while (opcao != 5){
@@ -89,7 +89,7 @@ int main(void){
                   system("clear");
               flush_in();
             printf (Ccyan"\n[1] ADICIONAR UM CARRO NA FILA\n\n");
-          if (tanque_atual>0){
+          if (tanque_atual > 0){
                  if(fila_atual < tamanho_fila){
             printf("\n\nQual o modelo do carro ? \n");
           fgets(carrosNAfila[fila_atual].modelo,20,stdin);
@@ -129,13 +129,21 @@ int main(void){
                 printf("Quantos litros deseja abastecer? \n");
                 scanf("%f", &abastecer_litros);
               while (abastecer_litros < 0){
+                  // Validação preço a abastecer maior que 0
                 printf(Cred "QUANTIDADE DE LITRO INVÁLIDA, POR FAVOR DIGITE UM NUMERO MAIOR QUE 0\n"Cwhite);
+                  printf("Quantos litros deseja abastecer? \n");
                   scanf("%f", &abastecer_litros);
               }
                 while (abastecer_litros > tanque_atual) {
                  printf("Puts chefia, não temos combustivel suficiente para atender ao seu pedido, temos apenas um total de %.2f L\n",tanque_atual);      
                 printf ("\nVamos encher com o máximo que tem no taque %2.fL ? Ou vai ser uma quantia menor\n ", tanque_atual);
+               scanf("%f", &abastecer_litros);
+                  // Validação preço a abastecer maior que 0
+                while (abastecer_litros < 0){
+                printf(Cred "QUANTIDADE DE LITRO INVÁLIDA, POR FAVOR DIGITE UM NUMERO MAIOR QUE 0\n"Cwhite);
+                  printf("Quantos litros deseja abastecer? \n");
                   scanf("%f", &abastecer_litros);
+              }
                 }
                 printf(Cgreen"\nCarro abastecido.\n"Cwhite);
   
@@ -143,6 +151,8 @@ int main(void){
                 tanque_atual = tanque_atual - abastecer_litros;
                 litros_vendidos = litros_vendidos + abastecer_litros;
                 valor_arrecadado = valor_arrecadado + (preco_combustivel * abastecer_litros); 
+                  
+                  // realocação vetor carros atendidos
                 carrosAtendidos = (struct TCarro*)realloc(carrosAtendidos,(Totalcarros_atendidos + 1) * sizeof(struct TCarro));
                 carrosAtendidos[Totalcarros_atendidos] = carrosNAfila[0];
                Totalcarros_atendidos = Totalcarros_atendidos+1;
@@ -197,7 +207,7 @@ int main(void){
                     printf(Cblue"\nCarro [%d]\n"Cwhite, i+1);
                     infoCarro(carrosAtendidos[i]);
                   }                   
-                  printf(Cblue"\nQuantidade de carros atendidios: %d\n"Cwhite, Totalcarros_atendidos);
+                  printf(Cblue"\nQuantidade de carros atendidos: %d\n"Cwhite, Totalcarros_atendidos);
   
                   break;
             case 4:
@@ -257,8 +267,8 @@ int main(void){
  return 0;
 
   }
+    
 //sub rotinas
-
   void opcaoMenu(){
     printf(Cyellow"\n\n_______________MENU PRINCIPAL_______________\n\n"Cwhite);
     printf(Cpurple"1 - Adicionar um carro na fila \n");
