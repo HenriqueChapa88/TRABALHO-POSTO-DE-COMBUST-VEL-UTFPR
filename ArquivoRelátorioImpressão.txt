@@ -3,18 +3,34 @@
 _______________ARQUIVO RELATÓRIO PARA IMPRESSÃO_______________
 
 
-Quantidade de litros vendida [190.00L]
+Quantidade de litros vendida [150.00L]
 
-Valor arrecadado com as vendas [380.00R$]
+Valor arrecadado com as vendas [750.00R$]
 
-Quantidade de carros atendidios: [1]
+Quantidade de carros atendidios: [3]
 
 Carro [1]
 
-Modelo do carro: 1
+Modelo do carro: kA sedan
 
- Cor do carro: 1
+ Cor do carro: Beje
 
-Ano de lançamento: 1
+Ano de lançamento: 2022
 
-Quantidade de combustível restante [10.00L]
+Carro [2]
+
+Modelo do carro: 2
+
+ Cor do carro: 2
+
+Ano de lançamento: 2
+
+Carro [3]
+
+Modelo do carro: 3
+
+ Cor do carro: 3
+
+Ano de lançamento: 3
+
+Quantidade de combustível restante [50.00L]

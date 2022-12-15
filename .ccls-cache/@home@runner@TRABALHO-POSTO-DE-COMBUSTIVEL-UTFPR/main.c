@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <ctype.h>
 
+//definicão das cores
+
 #define Cred "\e[0;31m"
 #define Cgreen "\e[0;32m"
 #define Cyellow "\e[0;33m"
@@ -12,8 +14,9 @@
 #define Ccyan "\e[0;36m"
 #define Cwhite "\e[0;37m"
 
+//sub rotinas que vão ser usadas
 
-void opcaoMenu(), opcaoInvalida(),opcaoRelatorio(), infoCarro();
+void opcaoMenu(), opcaoInvalida(),opcaoRelatorio(), infoCarro(), flush_in();
 
 //criação do struct
 struct TCarro{
@@ -22,13 +25,11 @@ char cor[20];
     int ano;
 };
 
-void flush_in(){
-  int ch;
-  while((ch = fgetc(stdin)) != EOF && ch != '\n'){}
-}
+//limpa o buffer
 
 int main(void){
- 
+  
+ // Dados do Criador do programa
   printf (Cgreen"\n\nPrograma feito por: Henrique Silva Pereira dos Santos\n\n");
   printf ("\n\nEste programa serve para gerenciar O POSTO DO CHAPA !!!!!!\n\n");
   printf ("\n\n"Cwhite);
@@ -51,7 +52,7 @@ int main(void){
     }
   }
   
-//Validação fila
+//Validação do tamanho da fila
   bool validacao_fila = false;
   while(validacao_fila == false){
     printf(Cwhite"\nInforme o tamanho máximo da fila que o posto suporta: \n");
@@ -102,6 +103,7 @@ int main(void){
           printf("\nQual o ano do carro?\n");
          scanf("%d"Cwhite, &carrosNAfila[fila_atual].ano);
             system("clear");
+            //adicionamento do carro na fila
            fila_atual = fila_atual+1;
           printf(Cgreen"\nCarro adicionado na fila\n");
             }
@@ -110,12 +112,12 @@ int main(void){
         }
         }else{
             printf(Cred"NÃO E POSSÍVEL ADICIONAR CARRO, POIS NÃO TEMOS MAIS COMBUSTÍVEL\n");
-          }
-             
+          }     
       break;
           
         case 2:
           system("clear");
+          //abastecimento de um veiculo
           printf ("\n[2] ABASTECER UM VEÍCULO\n\n");
           if(fila_atual != 0){
             float abastecer_litros;
@@ -137,10 +139,10 @@ int main(void){
               }
                 while (abastecer_litros > tanque_atual) {
                  printf("Puts chefia, não temos combustivel suficiente para atender ao seu pedido, temos apenas um total de %.2f L\n",tanque_atual);      
-                printf ("\nVamos encher com o máximo que tem no taque %2.fL ? Ou vai ser uma quantia menor\n ", tanque_atual);
+                printf ("\nVamos encher com o máximo que tem no tanque %2.fL ? Ou vai ser uma quantia menor\n ", tanque_atual);
                scanf("%f", &abastecer_litros);
                   // Validação preço a abastecer maior que 0
-                while (abastecer_litros < 0){
+                while (abastecer_litros <= 0){
                 printf(Cred "QUANTIDADE DE LITRO INVÁLIDA, POR FAVOR DIGITE UM NUMERO MAIOR QUE 0\n"Cwhite);
                   printf("Quantos litros deseja abastecer? \n");
                   scanf("%f", &abastecer_litros);
@@ -148,17 +150,19 @@ int main(void){
                 }
                 printf(Cgreen"\nCarro abastecido.\n"Cwhite);
   
-                
+                //Atualização dos Dados depois do abastecimento
                 tanque_atual = tanque_atual - abastecer_litros;
                 litros_vendidos = litros_vendidos + abastecer_litros;
                 valor_arrecadado = valor_arrecadado + (preco_combustivel * abastecer_litros); 
                   
                   // realocação vetor carros atendidos
                 carrosAtendidos = (struct TCarro*)realloc(carrosAtendidos,(Totalcarros_atendidos + 1) * sizeof(struct TCarro));
+                 
                 carrosAtendidos[Totalcarros_atendidos] = carrosNAfila[0];
                Totalcarros_atendidos = Totalcarros_atendidos+1;
                 fila_atual = fila_atual - 1;
-
+                  
+               //ordenação da fila de espera
                 for(int i = 0; i < tamanho_fila; i++) {
                   carrosNAfila[i] = carrosNAfila[i+1];
                 }
@@ -173,6 +177,7 @@ int main(void){
 
         
         case 3:
+          //carros na fila
         system("clear");
           restantes = fila_atual;
         printf (Cwhite "\n\n[3] FILA DE ESPERA\n\n");
@@ -250,7 +255,6 @@ int main(void){
           }
         }
       break;
-        
           case 5:
             system ("clear");
           printf(Ccyan"\n\n Programa encerrado, muito obrigado por utilizar esse programa meu Camarada !!!!!!!!!\n");
@@ -296,4 +300,8 @@ void opcaoRelatorio(){
   printf("\nModelo do carro: %s", Carros.modelo);
   printf("\n Cor do carro: %s\n", Carros.cor);
   printf("\nAno de lançamento: %d\n", Carros.ano);
+}
+    void flush_in(){
+  int ch;
+  while((ch = fgetc(stdin)) != EOF && ch != '\n'){}
 }
